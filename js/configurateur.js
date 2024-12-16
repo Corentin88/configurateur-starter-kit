@@ -64,17 +64,53 @@ const prixLettre = 1.8;
 window.addEventListener("load", () => {});
 
 const containerTissu = document.getElementById("tissu");
-  console.log(containerTissu);
+containerTissu.classList.add("ColorSelector");
+const containerPoche = document.getElementById("optionPoche");
+
 
 optionsTissu.forEach((option) => {
   const BoutonRadioCouleur = document.createElement("input");
   BoutonRadioCouleur.type = "radio";
+  BoutonRadioCouleur.name = "tissu";
   BoutonRadioCouleur.value = option.couleur;
-  BoutonRadioCouleur.classList.add("ColorSelector")
+  BoutonRadioCouleur.id = `tissu-${option.couleur}`;
+  BoutonRadioCouleur.classList.add("ColorRound");
   console.log(BoutonRadioCouleur);
 
- 
-  containerTissu.appendChild(BoutonRadioCouleur);
+  const label = document.createElement("label");
+  label.htmlFor = `tissu-${option.couleur}`;
+  label.style.display = "inline-block";
+  label.style.width = "40px";
+  label.style.height = "40px";
+  label.style.borderRadius = "50%"; // Cercle
+  label.style.backgroundColor = option.code;
+  label.style.margin = "10px";
+  label.style.cursor = "pointer";
+  label.style.border = "2px solid #7c7c7c";
+  console.log(label);
 
+  containerTissu.appendChild(BoutonRadioCouleur);
+  containerTissu.appendChild(label);
 });
 
+optionsPoche.forEach((option) => {
+  const BoutonRadioCouleurPoche = document.createElement("input");
+  BoutonRadioCouleurPoche.type = "radio";
+  BoutonRadioCouleurPoche.name = "couleurPoche";
+  BoutonRadioCouleurPoche.value = option.couleur;
+  BoutonRadioCouleurPoche.id = `couleurPoche-${option.couleur}`;
+  BoutonRadioCouleurPoche.classList.add("ColorRound");
+  const label = document.createElement("label");
+  label.htmlFor = `tissu-${option.couleur}`;
+  label.style.display = "inline-block";
+  label.style.width = "40px";
+  label.style.height = "40px";
+  label.style.borderRadius = "50%"; // Cercle
+  label.style.backgroundColor = option.code;
+  label.style.margin = "10px";
+  label.style.cursor = "pointer";
+  label.style.border = "2px solid #7c7c7c";
+
+  containerPoche.appendChild(BoutonRadioCouleurPoche);
+  containerPoche.appendChild(label);
+});
