@@ -66,7 +66,8 @@ window.addEventListener("load", () => {});
 const containerTissu = document.getElementById("tissu");
 containerTissu.classList.add("ColorSelector");
 const containerPoche = document.getElementById("optionPoche");
-
+containerPoche.classList.add("ColorSelector");
+const containerTexte = document.getElementById("textColorOption");
 
 optionsTissu.forEach((option) => {
   const BoutonRadioCouleur = document.createElement("input");
@@ -78,39 +79,54 @@ optionsTissu.forEach((option) => {
   console.log(BoutonRadioCouleur);
 
   const label = document.createElement("label");
-  label.htmlFor = `tissu-${option.couleur}`;
-  label.style.display = "inline-block";
-  label.style.width = "40px";
-  label.style.height = "40px";
-  label.style.borderRadius = "50%"; // Cercle
-  label.style.backgroundColor = option.code;
-  label.style.margin = "10px";
-  label.style.cursor = "pointer";
-  label.style.border = "2px solid #7c7c7c";
+  label.style.backgroundColor = optionsTissu.image ;
   console.log(label);
 
   containerTissu.appendChild(BoutonRadioCouleur);
   containerTissu.appendChild(label);
 });
 
-optionsPoche.forEach((option) => {
-  const BoutonRadioCouleurPoche = document.createElement("input");
-  BoutonRadioCouleurPoche.type = "radio";
-  BoutonRadioCouleurPoche.name = "couleurPoche";
-  BoutonRadioCouleurPoche.value = option.couleur;
-  BoutonRadioCouleurPoche.id = `couleurPoche-${option.couleur}`;
-  BoutonRadioCouleurPoche.classList.add("ColorRound");
-  const label = document.createElement("label");
-  label.htmlFor = `tissu-${option.couleur}`;
-  label.style.display = "inline-block";
-  label.style.width = "40px";
-  label.style.height = "40px";
-  label.style.borderRadius = "50%"; // Cercle
-  label.style.backgroundColor = option.code;
-  label.style.margin = "10px";
-  label.style.cursor = "pointer";
-  label.style.border = "2px solid #7c7c7c";
+// optionsPoche.forEach((option) => {
+//   const BoutonRadioCouleurPoche = document.createElement("input");
+//   BoutonRadioCouleurPoche.type = "radio";
+//   BoutonRadioCouleurPoche.name = "couleurPoche";
+//   BoutonRadioCouleurPoche.value = option.couleur;
+//   BoutonRadioCouleurPoche.id = `couleurPoche-${option.couleur}`;
+//   BoutonRadioCouleurPoche.classList.add("ColorRound");
+//   const label = document.createElement("label");
+//   label.htmlFor = `poche-${option.couleur}`;
+//   label.style.display = "inline-block";
+//   label.style.width = "40px";
+//   label.style.height = "40px";
+//   label.style.borderRadius = "50%"; // Cercle
+//   label.style.backgroundColor = option.code;
+//   label.style.margin = "10px";
+//   label.style.cursor = "pointer";
+//   label.style.border = "2px solid #7c7c7c";
 
-  containerPoche.appendChild(BoutonRadioCouleurPoche);
-  containerPoche.appendChild(label);
-});
+//   containerPoche.appendChild(BoutonRadioCouleurPoche);
+//   containerPoche.appendChild(label);
+// });
+
+
+// couleurText.forEach((option) => {
+//   const BoutonRadioCouleurTexte = document.createElement("input");
+//   BoutonRadioCouleurTexte.type = "radio";
+//   BoutonRadioCouleurTexte.name = "couleurPoche";
+//   BoutonRadioCouleurTexte.value = option.couleur;
+//   BoutonRadioCouleurTexte.id = `couleurTexte-${option.couleur}`;
+//   BoutonRadioCouleurTexte.classList.add("ColorRound");
+//   const label = document.createElement("label");
+//   label.htmlFor = `tissu-${option.couleur}`;
+//   label.style.display = "inline-block";
+//   label.style.width = "40px";
+//   label.style.height = "40px";
+//   label.style.borderRadius = "50%"; // Cercle
+//   label.style.backgroundColor = option.code;
+//   label.style.margin = "10px";
+//   label.style.cursor = "pointer";
+//   label.style.border = "2px solid #7c7c7c";
+
+//   containerTexte.appendChild(BoutonRadioCouleurTexte);
+//   containerTexte.appendChild(label);
+// });
