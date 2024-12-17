@@ -56,10 +56,11 @@ const couleurText = [
 ];
 let selectedTissu = "Violet";
 let selectedPoche = "Rouge";
-let customText = "Votre texte ici";
+let customText = "";
 let selectedTextColor = "Noir";
 let textOption = true;
 const prixLettre = 1.8;
+let custom = document.getElementById("customText");
 
 window.addEventListener("load", () => {});
 
@@ -158,11 +159,21 @@ couleurText.forEach((option) => {
 });
 
 const RadioOui = document.getElementById("UseText1");
-  if ((RadioOui === true)) {
-    
-  }else{
+const RadioNon = document.getElementById("UseText2");
+const viewer = document.querySelector(".viewer");
+RadioOui.addEventListener("change", () => {
+  textTablier.disabled = false;
+  containerTexte.style.display = "block";
+  TextePerso.style.display = "block";
+  custom.style.display = "block";
+});
 
-  }
+RadioNon.addEventListener("change", () => {
+  textTablier.disabled = true;
+  containerTexte.style.display = "none";
+  TextePerso.style.display = "none";
+  custom.style.display = "none";
+});
 
 function updateTotalPrice() {
   const total = prixTissu + prixPoche + prixTexte;
