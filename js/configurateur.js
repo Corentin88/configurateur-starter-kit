@@ -72,6 +72,9 @@ let prixPoche = 0;
 let prixTexte = 0;
 let texteTissu = document.getElementById("displayTissu");
 let textePoche = document.getElementById("displayPoche");
+let imageTissu = document.getElementById("optionTissuImage");
+let imagePoche = document.getElementById("optionPocheImage");
+
 
 optionsTissu.forEach((option) => {
   const BoutonCouleur = document.createElement("div");
@@ -82,6 +85,7 @@ optionsTissu.forEach((option) => {
     BoutonCouleur.classList.add("selectedColor");
     texteTissu.textContent = option.couleur;
     prixTissu = option.price;
+    imageTissu.src = option.image;
     updateTotalPrice();
   }
   BoutonCouleur.addEventListener("click", () => {
@@ -91,6 +95,8 @@ optionsTissu.forEach((option) => {
     });
     BoutonCouleur.classList.add("selectedColor");
     prixTissu = option.price;
+    imageTissu.src = option.image;
+
     updateTotalPrice();
   });
 
@@ -106,16 +112,17 @@ optionsPoche.forEach((option) => {
     BoutonCouleur.classList.add("selectedColor");
     textePoche.textContent = option.couleur;
     prixPoche = option.price;
+    imagePoche.src = option.image;
     updateTotalPrice();
   }
   BoutonCouleur.addEventListener("click", () => {
     document.querySelectorAll(".poche").forEach((button) => {
       button.classList.remove("selectedColor");
-            textePoche.textContent = option.couleur;
-
+      textePoche.textContent = option.couleur;
     });
     BoutonCouleur.classList.add("selectedColor");
     prixPoche = option.price;
+    imagePoche.src = option.image;
     updateTotalPrice();
   });
 
