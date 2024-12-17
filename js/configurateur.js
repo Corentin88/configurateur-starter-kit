@@ -75,7 +75,8 @@ let textePoche = document.getElementById("displayPoche");
 let imageTissu = document.getElementById("optionTissuImage");
 let imagePoche = document.getElementById("optionPocheImage");
 const textTablier = document.getElementById("customText");
-console.log(textTablier);
+const TextePerso = document.querySelector(".textePerso")
+console.log(TextePerso);
 
 optionsTissu.forEach((option) => {
   const BoutonCouleur = document.createElement("div");
@@ -143,13 +144,12 @@ couleurText.forEach((option) => {
       button.classList.remove("selectedColor");
     });
     BoutonCouleurText.classList.add("selectedColor");
-
-    textTablier.addEventListener("input", () => {
-      customText = textTablier.value;
-      textTablier.textContent = customText;
-      prixTexte = customText.length * prixLettre;
-      updateTotalPrice();
-    });
+  });
+  textTablier.addEventListener("input", () => {
+    customText = textTablier.value;
+    TextePerso.textContent = customText;
+    prixTexte = customText.length * prixLettre;
+    updateTotalPrice();
   });
 
   containerTexte.appendChild(BoutonCouleurText);
