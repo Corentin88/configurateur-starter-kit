@@ -75,8 +75,7 @@ let textePoche = document.getElementById("displayPoche");
 let imageTissu = document.getElementById("optionTissuImage");
 let imagePoche = document.getElementById("optionPocheImage");
 const textTablier = document.getElementById("customText");
-const TextePerso = document.querySelector(".textePerso")
-console.log(TextePerso);
+const TextePerso = document.querySelector(".textePerso");
 
 optionsTissu.forEach((option) => {
   const BoutonCouleur = document.createElement("div");
@@ -148,7 +147,8 @@ couleurText.forEach((option) => {
   textTablier.addEventListener("input", () => {
     customText = textTablier.value;
     TextePerso.textContent = customText;
-    prixTexte = customText.length * prixLettre;
+    const texteSansEspaces = customText.replace(/\s+/g, '');
+    prixTexte = texteSansEspaces.length * prixLettre;
     updateTotalPrice();
   });
 
