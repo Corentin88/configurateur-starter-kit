@@ -141,19 +141,28 @@ couleurText.forEach((option) => {
   BoutonCouleurText.addEventListener("click", () => {
     document.querySelectorAll(".texte").forEach((button) => {
       button.classList.remove("selectedColor");
+      TextePerso.style.color = option.code;
     });
     BoutonCouleurText.classList.add("selectedColor");
   });
+
   textTablier.addEventListener("input", () => {
     customText = textTablier.value;
     TextePerso.textContent = customText;
-    const texteSansEspaces = customText.replace(/\s+/g, '');
+    const texteSansEspaces = customText.replaceAll(" ", "");
     prixTexte = texteSansEspaces.length * prixLettre;
     updateTotalPrice();
   });
 
   containerTexte.appendChild(BoutonCouleurText);
 });
+
+const RadioOui = document.getElementById("UseText1");
+  if ((RadioOui === true)) {
+    
+  }else{
+
+  }
 
 function updateTotalPrice() {
   const total = prixTissu + prixPoche + prixTexte;
