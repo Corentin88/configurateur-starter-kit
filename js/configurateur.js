@@ -165,14 +165,14 @@ RadioOui.addEventListener("change", () => {
   textTablier.disabled = false;
   containerTexte.style.display = "block";
   TextePerso.style.display = "block";
-  custom.style.display = "block";
+  custom.style.visibility = "visible";
 });
 
 RadioNon.addEventListener("change", () => {
   textTablier.disabled = true;
   containerTexte.style.display = "none";
   TextePerso.style.display = "none";
-  custom.style.display = "none";
+  custom.style.visibility = "hidden";
 });
 
 function updateTotalPrice() {
