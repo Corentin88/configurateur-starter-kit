@@ -66,18 +66,32 @@ window.addEventListener("load", () => {});
 const containerTissu = document.getElementById("tissu");
 const containerPoche = document.getElementById("optionPoche");
 const containerTexte = document.getElementById("textColorOptions");
-let totalPrice = document.getElementById("price");
+const totalPrice = document.querySelector(".price");
+let prixTissu = 0;
+let prixPoche = 0;
+let prixTexte = 0;
+let texteTissu = document.getElementById("displayTissu");
+let textePoche = document.getElementById("displayPoche");
 
 optionsTissu.forEach((option) => {
   const BoutonCouleur = document.createElement("div");
   BoutonCouleur.id = `tissu-${option.couleur}`;
-  BoutonCouleur.classList.add("ColorRound");
+  BoutonCouleur.classList.add("ColorRound", "tissu");
   BoutonCouleur.style.backgroundColor = option.code;
+  if (option.couleur === selectedTissu) {
+    BoutonCouleur.classList.add("selectedColor");
+    texteTissu.textContent = option.couleur;
+    prixTissu = option.price;
+    updateTotalPrice();
+  }
   BoutonCouleur.addEventListener("click", () => {
-    document.querySelectorAll(".ColorRound").forEach((button) => {
+    document.querySelectorAll(".tissu").forEach((button) => {
       button.classList.remove("selectedColor");
+      texteTissu.textContent = option.couleur;
     });
     BoutonCouleur.classList.add("selectedColor");
+    prixTissu = option.price;
+    updateTotalPrice();
   });
 
   containerTissu.appendChild(BoutonCouleur);
@@ -86,28 +100,47 @@ optionsTissu.forEach((option) => {
 optionsPoche.forEach((option) => {
   const BoutonCouleur = document.createElement("div");
   BoutonCouleur.id = `poche${option.couleur}`;
-  BoutonCouleur.classList.add("ColorRound");
+  BoutonCouleur.classList.add("ColorRound", "poche");
   BoutonCouleur.style.backgroundColor = option.code;
+  if (option.couleur === selectedPoche) {
+    BoutonCouleur.classList.add("selectedColor");
+    textePoche.textContent = option.couleur;
+    prixPoche = option.price;
+    updateTotalPrice();
+  }
   BoutonCouleur.addEventListener("click", () => {
-    document.querySelectorAll(".ColorRound").forEach((button) => {
+    document.querySelectorAll(".poche").forEach((button) => {
       button.classList.remove("selectedColor");
+            textePoche.textContent = option.couleur;
+
     });
     BoutonCouleur.classList.add("selectedColor");
+    prixPoche = option.price;
+    updateTotalPrice();
   });
 
   containerPoche.appendChild(BoutonCouleur);
 });
 couleurText.forEach((option) => {
-  const BoutonCouleur = document.createElement("div");
-  BoutonCouleur.id = `texte${option.couleur}`;
-  BoutonCouleur.classList.add("ColorRound");
-  BoutonCouleur.style.backgroundColor = option.code;
-  BoutonCouleur.addEventListener("click", () => {
-    document.querySelectorAll(".ColorRound").forEach((button) => {
+  const BoutonCouleurText = document.createElement("div");
+  BoutonCouleurText.id = `texte${option.couleur}`;
+  BoutonCouleurText.classList.add("ColorRound", "texte");
+  BoutonCouleurText.style.backgroundColor = option.code;
+
+  BoutonCouleurText.addEventListener("click", () => {
+    document.querySelectorAll(".texte").forEach((button) => {
       button.classList.remove("selectedColor");
     });
-    BoutonCouleur.classList.add("selectedColor");
+
+    BoutonCouleurText.classList.add("selectedColor");
+    prixTexte = customText.length * prixLettre;
+    updateTotalPrice();
   });
 
-  containerTexte.appendChild(BoutonCouleur);
+  containerTexte.appendChild(BoutonCouleurText);
 });
+
+function updateTotalPrice() {
+  const total = prixTissu + prixPoche + prixTexte;
+  totalPrice.textContent = total.toFixed(2) + "€";
+}
